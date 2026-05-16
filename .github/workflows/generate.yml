@@ -43,7 +43,7 @@ jobs:
         run: |
           mkdir -p carpb
           protoc \
-            --proto_path=proto-source/proto/car \
+            --proto_path=proto-source/car \
             --go_out=carpb \
             --go_opt=paths=source_relative \
             --go-grpc_out=carpb \
