@@ -21,7 +21,7 @@ jobs:
 
       - name: Clone proto repo
         run: |
-          git clone https://x-access-token:${{ secrets.PAT_TOKEN }}@github.com/Moldirkab/ap2_final_car_proto.git proto-source
+          git clone https://x-access-token:${{ secrets.PAT_TOKEN }}@github.com/Moldirkab/ap2_final_car_service_proto.git proto-source
 
       - name: Set up Go
         uses: actions/setup-go@v5
