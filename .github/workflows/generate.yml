@@ -1,16 +1,21 @@
 name: Generate Go Proto Code
+
 on:
   workflow_dispatch:
   push:
     branches:
       - main
+
 permissions:
   contents: write
+
 jobs:
   generate:
     runs-on: ubuntu-latest
+
     env:
       FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+
     steps:
       - name: Checkout generated repo
         uses: actions/checkout@v4
@@ -42,16 +47,21 @@ jobs:
         run: |
           rm -rf carpb
 
+      # 🔥 FIXED STEP
       - name: Generate Go code
         run: |
+          set -e
           mkdir -p carpb
+
+          ls -R proto-source/car
+
           protoc \
             --proto_path=proto-source/car \
             --go_out=carpb \
             --go_opt=paths=source_relative \
             --go-grpc_out=carpb \
             --go-grpc_opt=paths=source_relative \
-            car.proto
+            proto-source/car/car.proto
 
       - name: Create go.mod
         run: |
@@ -60,6 +70,7 @@ jobs:
 
           go 1.21
           EOF
+
           go mod tidy
 
       - name: Commit and push generated files
@@ -67,6 +78,9 @@ jobs:
           rm -rf proto-source
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
           git add .
+
           git diff --cached --quiet || git commit -m "Generate car protobuf Go files"
+
           git push
