@@ -19,13 +19,13 @@ import (
 const _ = grpc.SupportPackageIsVersion9
 
 const (
-	CarService_CreateCar_FullMethodName         = "/car.CarService/CreateCar"
-	CarService_GetCar_FullMethodName            = "/car.CarService/GetCar"
-	CarService_ListCars_FullMethodName          = "/car.CarService/ListCars"
-	CarService_UpdateCar_FullMethodName         = "/car.CarService/UpdateCar"
-	CarService_DeleteCar_FullMethodName         = "/car.CarService/DeleteCar"
-	CarService_CheckAvailability_FullMethodName = "/car.CarService/CheckAvailability"
-	CarService_ChangeCarStatus_FullMethodName   = "/car.CarService/ChangeCarStatus"
+	CarService_CreateCar_FullMethodName         = "/carpb.CarService/CreateCar"
+	CarService_GetCar_FullMethodName            = "/carpb.CarService/GetCar"
+	CarService_ListCars_FullMethodName          = "/carpb.CarService/ListCars"
+	CarService_UpdateCar_FullMethodName         = "/carpb.CarService/UpdateCar"
+	CarService_DeleteCar_FullMethodName         = "/carpb.CarService/DeleteCar"
+	CarService_CheckAvailability_FullMethodName = "/carpb.CarService/CheckAvailability"
+	CarService_ChangeCarStatus_FullMethodName   = "/carpb.CarService/ChangeCarStatus"
 )
 
 // CarServiceClient is the client API for CarService service.
@@ -312,7 +312,7 @@ func _CarService_ChangeCarStatus_Handler(srv interface{}, ctx context.Context, d
 // It's only intended for direct use with grpc.RegisterService,
 // and not to be introspected or modified (even as a copy)
 var CarService_ServiceDesc = grpc.ServiceDesc{
-	ServiceName: "car.CarService",
+	ServiceName: "carpb.CarService",
 	HandlerType: (*CarServiceServer)(nil),
 	Methods: []grpc.MethodDesc{
 		{
